@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+</head>
+<body>
+
+<script>
+(function () {
+
+    const allowedHost = "glambun.com";
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const targetUrl = urlParams.get("u");
+
+    if (targetUrl) {
+
+        try {
+
+            const parsedUrl = new URL(targetUrl);
+
+            if (parsedUrl.hostname === allowedHost) {
+
+                window.location.replace(targetUrl);
+
+            } else {
+
+                document.body.innerHTML =
+                "<h2>Invalid redirect domain</h2>";
+
+            }
+
+        } catch (e) {
+
+            document.body.innerHTML =
+            "<h2>Malformed URL</h2>";
+
+        }
+
+    }
+
+})();
+</script>
+
+</body>
+</html>
